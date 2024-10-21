@@ -31,9 +31,10 @@ func main() {
 	// const myURL = `https://jsonplaceholder.typicode.com/todos/${todo.ID}`
 	const baseURL = "https://jsonplaceholder.typicode.com/todos/"
 	myURL := fmt.Sprintf("%s%d", baseURL, todo.Id)
-	
+
 	jsonReader := strings.NewReader(string(jsonData))
-	req,err := http.NewRequest("PUT",myURL,jsonReader)
+	// req,err := http.NewRequest("PUT",myURL,jsonReader)       OR
+	req,err := http.NewRequest(http.MethodPut,myURL,jsonReader)
 	if(err!=nil){
 		fmt.Println("Error creating PUT Request:", err)
 		return;
